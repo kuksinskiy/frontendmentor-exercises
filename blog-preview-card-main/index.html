@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- displays site properly based on user's device -->
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./assets/images/favicon-32x32.png"
+		>
+
+		<title>Frontend Mentor | Blog preview card</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+			rel="stylesheet"
+		>
+
+		<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+		<style>		
+		:root {
+			--color-primary: oklch(0.866 0.15 93); /* yellow */
+			--color-white: oklch(1 0 0);
+			--color-gray-950: oklch(0.1776 0 0);
+			--color-gray-500: oklch(0.5278 0 0);
+			--font-family-base: "Figtree", sans-serif;
+
+			/* Используем rem. 1.5rem = 24px, 0.75rem = 12px и т.д. (при базе 16px) */
+			--spacing-md: 1.5rem;
+			--spacing-sm: 0.75rem;
+			--radius-md: 1.25rem;  /* 20px */
+			--radius-sm: 0.625rem; /* 10px */
+			--radius-xs: 0.25rem;  /* 4px */
+		}
+
+		*,
+		*::after,
+		*::before {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Базовый font-size, чтобы 1rem = 16px */
+		html {
+			font-size: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: var(--spacing-md)
+		}
+
+		.page {
+			display: grid;
+			place-items: center;
+			min-height: 100dvh; /* why not height? */
+			background-color: var(--color-primary);
+			font-family: var(--font-family-base);
+			line-height: 1.5;
+			color: var(--color-gray-950);
+			padding: var(--spacing-md);
+		}
+
+		/* Адаптивные изображения по умолчанию */
+		img, picture, svg {
+			display: block;
+			max-width: 100%;
+		}
+
+		.card {
+			background-color: var(--color-white);
+			border: 1px solid var(--color-gray-950);
+			display: flex;
+			flex-direction: column;
+			gap: var(--spacing-md);
+			padding: var(--spacing-md);
+			border-radius: var(--radius-md);
+			box-shadow: 8px 8px 0 0 var(--color-gray-950);
+			max-width: 384px;
+
+			/* Плавный переход для hover-эффекта */
+			transition: box-shadow 0.2s ease-out;
+		}
+
+		.card:hover {
+			/* Усиливаем тень при наведении на *карточку* */
+			box-shadow: 12px 12px 0 0 var(--color-gray-950);
+		}
+
+		.card__visual {
+			/* margin уже обнулены */
+			overflow: hidden; /* скругление у img */
+			border-radius: var(--radius-sm);
+		}
+
+		.card__image {
+			width: 100%;
+			object-fit: cover;
+		}
+
+		.card__content {
+			display: flex;
+			flex-direction: column;
+			gap: var(--spacing-sm);
+		}
+
+		.card__category {
+			background-color: var(--color-primary);
+			padding: 0.25rem 0.75rem /* 4px 12px */;
+			border-radius: var(--radius-xs);
+			font-weight: 800;
+			font-size: .75rem; /* 12px */
+			width: fit-content; /* Чтобы не растягивался на всю ширину */
+		}
+
+		.card__date {
+			/* margin уже сброшен */
+			/* margin: 0 */
+			font-size: .75rem;  /* 12px */
+			font-weight: 500;			
+		}
+
+		.card__title {
+			/* margin уже сброшен */
+			/* margin: 0 */
+			font-size: 1.25rem;
+			font-weight: 800;
+		}
+
+		.card__title--link {
+			color: var(--color-gray-950);
+			text-decoration: none;
+			transition: color 0.2s ease-out;
+		}
+
+		.card__title--link:hover,
+		.card__title--link:focus-visible {
+			color: var(--color-primary);
+		}
+
+		.card__description {
+			/* maring: 0; */
+			font-weight: 500;
+			font-size: .875rem; /* 14px */
+		}
+
+		.card__author {
+			display: flex;
+			align-items: center;
+			gap: var(--spacing-sm);
+			font-size: .875rem;
+			font-weight: 800;
+		}
+
+		.card__avatar {
+			width: 32px;
+			height: 32px;
+			border-radius: 50%; /* Гарантируем круглый аватар */
+		}
+
+		@media (min-width: 376px) {
+			.card__category {
+				font-size: .875rem; /* 14px */
+			}
+
+			.card__date {
+				font-size: .875rem; /* 14px */
+			}
+
+			.card__title {
+				font-size: 1.5rem;
+			}
+
+			.card__description {
+				font-size: 1rem;
+			}
+			
+		}
+
+		</style>
+	</head>
+	<body class="page">
+		<article class="card">
+			<figure class="card__visual">
+				<img
+					src="assets/images/illustration-article.svg"
+					alt="HTML & CSS foundations"
+					class="card__image"
+				>
+			</figure>
+			<div class="card__content">
+				<span class="card__category">Learning</span>
+
+				<p class="card__date">Published 21 Dec 2023</p>
+
+				<h2 class="card__title">
+					<a href="#" class="card__title--link">HTML & CSS foundations</a>
+				</h2>
+
+				<p class="card__description">
+					These languages are the backbone of every website, defining structure,
+					content, and presentation.
+				</p>
+			</div>
+
+			<footer class="card__author">
+				<img
+					src="assets/images/image-avatar.webp"
+					alt="userpic"
+					class="card__avatar"
+				>
+				<span class="card__author-name">Greg Hooper</span>
+			</footer>
+		</article>
+	</body>
+</html>
