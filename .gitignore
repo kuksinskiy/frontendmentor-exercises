@@ -1,5 +1,8 @@
 .DS_Store
 .prettierignore
 node_modules
+package.json
 biome.json
+pnpm-lock.yaml
 .vscode
+.gitignore
